@@ -23,3 +23,28 @@ class HTMLNode():
 
 	def __repr__(self):
 		return f"HTMLNode( tag:{self.tag}, value:{self.value}, children:{self.children}, props:{self.props})"
+
+
+class LeafNode(HTMLNode):
+	def __init__(self,tag,value,props=None):
+		# we use the super therefore we dont have to assign self.tag = tag , 
+		# if we would have a new parameter which the parent class doesnt have then we would need it example class self.class = class
+		super().__init__(tag=tag,value=value,children=None,props=props)
+		
+		
+
+	def to_html(self):
+		if self.value == None:
+			raise ValueError("All leaf nodes must have a value")
+		if self.tag == None:
+			return self.value
+		else:
+			if self.props == None:
+				return f"<{self.tag}>{self.value}</{self.tag}>"
+			else:
+				result = f"<{self.tag} {self.props_to_html()}>{self.value}</{self.tag}>"
+				return result
+
+
+	def __repr__(self):
+		return f"LeafNode(tag:{self.tag}, value:{self.value}, props:{self.props})"
