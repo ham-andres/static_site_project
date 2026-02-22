@@ -37,3 +37,4 @@ def text_node_to_html_node(text_node):
         return LeafNode(tag="img",value="",props={"src":text_node.url,"alt":text_node.text})
        
     raise Exception("Text_node has no texttype belonging to TEXTNODE")
+
