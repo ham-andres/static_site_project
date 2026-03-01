@@ -1,6 +1,6 @@
 import os
 import shutil
-
+from gencontent import generate_page
 
 def copy_file_recursive(source_dir, dest_dir):
     if not os.path.exists(dest_dir):
@@ -27,7 +27,7 @@ def main():
     os.mkdir("./public")
 
     copy_file_recursive("./static","./public")
-
+    generate_page('content/index.md', 'template.html', 'public/index.html')
 
 if __name__== '__main__':
     main()
